@@ -25,7 +25,7 @@
 <body>
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Tech News</a>
+        <a class="navbar-brand" href="#">Africa Tech Gist</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -43,6 +43,11 @@
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#disrupt">Distrupt Africa<span
+                            class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#ben">Benjamin Dada<span
                             class="sr-only">(current)</span></a>
                 </li>
 
@@ -106,6 +111,33 @@
             <hr>
 
         </div> <!-- /container -->
+
+
+
+        <div class="container" id="ben">
+            <div>
+                <h1 class="titl">Benjamin Dada</h1>
+            </div>
+            <!-- Example row of columns -->
+            <div class="row">
+
+                            {% for new in news_bd %}
+                <div class="col-md-4">
+
+                    <p>{{new.news}}</p>
+                    <p><a class="btn btn-primary" href="{{new.link}}" role="button">View details &raquo;</a></p>
+                </div>
+            {% endfor %}
+
+
+            </div>
+
+            <hr>
+
+        </div> <!-- /container -->
+
+
+
 
 
         <div class="container" id="techcabal">
