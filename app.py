@@ -26,7 +26,7 @@ def home():
     ben = soup_bd.find_all('a', class_="post-card-content-link")
 
 
-    news_point = [{'news':n.find('a').text,'link':n.find('a')['href']} for n in point]
+    news_point = [{'news':n.text, 'link':n.a["href"]} for n in point]
     news_cabal = [{'news':n.text.strip(),'link':n["href"].strip()} for n in cabal if n.text !=""]
     news_rupt = [{'news': n.text.strip(), 'link': n["href"].strip()} for n in rupt]
     news_bd = [{'news':r.h2.text,'link':f'https://www.benjamindada.com{r["href"]}'} for r in ben if r.find('span',class_="post-card-tags")]
