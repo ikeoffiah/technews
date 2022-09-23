@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    tech_point = requests.get("https://techpoint.africa/").text
+    tech_point = requests.get("https://techpoint.africa/subjects/startups/").text
     techcabal = requests.get("https://techcabal.com/category/startups/").text
     disrupt = requests.get("https://disrupt-africa.com/").text
     bd = requests.get("https://www.benjamindada.com/").text
@@ -20,13 +20,13 @@ def home():
     soup_disrupt = BeautifulSoup(disrupt, 'lxml')
     soup_bd = BeautifulSoup(bd, 'lxml')
 
-    point = soup_point.find_all('h4', class_="entry-title")
+    point = soup_point.find_all('a', class_="cursor-pointer")
     cabal = soup_cabal.find_all('a', class_="article-list-title")
     rupt = soup_disrupt.find_all('a', class_="post-title")
     ben = soup_bd.find_all('a', class_="post-card-content-link")
 
 
-    news_point = [{'news':n.text, 'link':n.a["href"]} for n in point]
+    news_point = [{'news':n.p.text, 'link':n["href"]} for n in point]
     news_cabal = [{'news':n.text.strip(),'link':n["href"].strip()} for n in cabal if n.text !=""]
     news_rupt = [{'news': n.text.strip(), 'link': n["href"].strip()} for n in rupt]
     news_bd = [{'news':r.h2.text,'link':f'https://www.benjamindada.com{r["href"]}'} for r in ben if r.find('span',class_="post-card-tags")]
